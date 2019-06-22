@@ -1,5 +1,5 @@
 /***
-|Description|highlights saving button (bold red) and the document title (adds a leading "*") when there are unsaved changes|
+|Description|highlights saving button (bold red by default) and the document title (adds a leading "*") when there are unsaved changes|
 |Version|1.4|
 |Author|Yakov Litvin|
 <<option chkShowDirtyStory>> show unsaved if any tiddler is opened for editing
