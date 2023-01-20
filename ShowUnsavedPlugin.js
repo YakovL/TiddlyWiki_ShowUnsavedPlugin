@@ -1,6 +1,6 @@
 /***
-|Description|highlights saving button (bold red by default) and the document title (adds a leading "*") when there are unsaved changes|
-|Version|1.4|
+|Description|highlights saving button (bold red by default) and the document title (adds a leading "*") when there are unsaved changes (also toggles {{{hasUnsavedChanges}}} class of the root element for hackability)|
+|Version|1.5|
 |Author|Yakov Litvin|
 |Source|https://github.com/YakovL/TiddlyWiki_ShowUnsavedPlugin/blob/master/ShowUnsavedPlugin.js|
 |License|[[MIT|https://github.com/YakovL/TiddlyWiki_ShowUnsavedPlugin/blob/master/LICENSE]]|
@@ -12,13 +12,16 @@ config.macros.showDirtyPlugin = {
 	// styles that highlight save button when there's something to save
 	showDirtyCss: ".saveChangesButton { font-weight: bold; color: red !important; }",
 	styleSheetName: "suggestSavingOnDirty",
+	containerClassName: "hasUnsavedChanges",
 	showDrity: function(dirty) {
 		const css = store.getTiddlerText('StyleSheetUnsaved');
 		if(dirty) {
+			jQuery('html').addClass(this.containerClassName);
 			setStylesheet(css, this.styleSheetName);
 			if(document.title[0] != "*")
 				document.title = "*" + document.title;
 		} else {
+			jQuery('html').removeClass(this.containerClassName);
 			removeStyleSheet(this.styleSheetName);
 			if(document.title[0] == "*")
 				document.title = document.title.substr(1);
