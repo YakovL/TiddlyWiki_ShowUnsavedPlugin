@@ -14,39 +14,38 @@ config.macros.showDirtyPlugin = {
 	styleSheetName: "suggestSavingOnDirty",
 	containerClassName: "hasUnsavedChanges",
 	showDrity: function(dirty) {
-		const css = store.getTiddlerText('StyleSheetUnsaved');
+		const css = store.getTiddlerText('StyleSheetUnsaved')
 		if(dirty) {
-			jQuery('html').addClass(this.containerClassName);
-			setStylesheet(css, this.styleSheetName);
+			jQuery('html').addClass(this.containerClassName)
+			setStylesheet(css, this.styleSheetName)
 			if(document.title[0] != "*")
-				document.title = "*" + document.title;
+				document.title = "*" + document.title
 		} else {
-			jQuery('html').removeClass(this.containerClassName);
-			removeStyleSheet(this.styleSheetName);
+			jQuery('html').removeClass(this.containerClassName)
+			removeStyleSheet(this.styleSheetName)
 			if(document.title[0] == "*")
-				document.title = document.title.substr(1);
+				document.title = document.title.substring(1)
 		}
 	},
 	checkDirty: function() {
 		return store.isDirty() ||
-			(config.options.chkShowDirtyStory && story.areAnyDirty());
+			(config.options.chkShowDirtyStory && story.areAnyDirty())
 	},
 	init: function() {
-		config.shadowTiddlers.StyleSheetUnsaved = this.showDirtyCss;
+		config.shadowTiddlers.StyleSheetUnsaved = this.showDirtyCss
 
 		// add the "saveChangesButton" class to the save changes button
-		config.macros.saveChanges.SCM_orig_handler = config.macros.saveChanges.handler;
+		config.macros.saveChanges.SCM_orig_handler = config.macros.saveChanges.handler
 		config.macros.saveChanges.handler = function(place, macroName, params) {
-
-			this.SCM_orig_handler.apply(this, arguments);
-			place.lastChild.classList.add("saveChangesButton");
-		};
+			this.SCM_orig_handler.apply(this, arguments)
+			place.lastChild.classList.add("saveChangesButton")
+		}
 
 		// regularly check and indicate unsaved
 		setInterval(function() {
-			const isDirty = config.macros.showDirtyPlugin.checkDirty();
-			config.macros.showDirtyPlugin.showDrity(isDirty);
-		}, 500);
+			const isDirty = config.macros.showDirtyPlugin.checkDirty()
+			config.macros.showDirtyPlugin.showDrity(isDirty)
+		}, 500)
 	}
-};
+}
 //}}}
