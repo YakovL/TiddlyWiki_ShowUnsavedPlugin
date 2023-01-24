@@ -1,6 +1,6 @@
 /***
 |Description|highlights saving button (bold red by default) and the document title (adds a leading "*") when there are unsaved changes (also toggles {{{hasUnsavedChanges}}} class of the root element for hackability)|
-|Version|1.5|
+|Version|1.5.1|
 |Author|Yakov Litvin|
 |Source|https://github.com/YakovL/TiddlyWiki_ShowUnsavedPlugin/blob/master/ShowUnsavedPlugin.js|
 |License|[[MIT|https://github.com/YakovL/TiddlyWiki_ShowUnsavedPlugin/blob/master/LICENSE]]|
@@ -18,13 +18,11 @@ config.macros.showDirtyPlugin = {
 		if(dirty) {
 			jQuery('html').addClass(this.containerClassName)
 			setStylesheet(css, this.styleSheetName)
-			if(document.title[0] != "*")
-				document.title = "*" + document.title
+			document.title = "*" + getPageTitle()
 		} else {
 			jQuery('html').removeClass(this.containerClassName)
 			removeStyleSheet(this.styleSheetName)
-			if(document.title[0] == "*")
-				document.title = document.title.substring(1)
+			document.title = getPageTitle()
 		}
 	},
 	checkDirty: function() {
