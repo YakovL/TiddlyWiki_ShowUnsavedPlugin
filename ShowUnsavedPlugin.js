@@ -1,9 +1,9 @@
 /***
 |Description|highlights saving button (bold red by default) and the document title (adds a leading "*") when there are unsaved changes (also toggles {{{hasUnsavedChanges}}} class of the root element for hackability)|
-|Version|1.5.1|
-|Author|Yakov Litvin|
-|Source|https://github.com/YakovL/TiddlyWiki_ShowUnsavedPlugin/blob/master/ShowUnsavedPlugin.js|
-|License|[[MIT|https://github.com/YakovL/TiddlyWiki_ShowUnsavedPlugin/blob/master/LICENSE]]|
+|Version    |1.5.1|
+|Author     |Yakov Litvin|
+|Source     |https://github.com/YakovL/TiddlyWiki_ShowUnsavedPlugin/blob/master/ShowUnsavedPlugin.js|
+|License    |[[MIT|https://github.com/YakovL/TiddlyWiki_YL_ExtensionsCollection/blob/master/Common%20License%20(MIT)]]|
 <<option chkShowDirtyStory>> show unsaved if any tiddler is opened for editing
 Styles applied to unsaved TW can be adjusted in StyleSheetUnsaved
 ***/
